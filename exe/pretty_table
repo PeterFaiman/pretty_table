@@ -1,0 +1,28 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require 'optparse'
+
+justify = :right
+
+OptionParser.new do |opts|
+  # cut style
+  opts.on('-d', :REQUIRED, 'Delimiter (default: whitespace).') { |d| $FS = d }
+  # awk style
+  opts.on('-F', :REQUIRED, 'Awk-style alias for -d.') { |f| $FS = f }
+
+  opts.on('-l', 'Left justify.') { justify = :left }
+  opts.on('-r', 'Right justify (default).') { justify = :right }
+end.parse!
+
+$FS = case $FS
+      when '\t' then "\t"
+      when /\A\\x(\h\h)\z/ then [$1].pack('H*')
+      else $FS
+      end
+
+headers = STDIN.readline.chomp.split
+rows = STDIN.each_line.map { |line| line.chomp.split }
+
+require 'pretty_table'
+puts PrettyTable.pretty_table(headers, rows, justify: justify)

@@ -1,0 +1,25 @@
+AllCops:
+  TargetRubyVersion: 2.4
+
+Metrics/AbcSize:
+  Max: 30
+
+Metrics/MethodLength:
+  Max: 30
+
+Style/ClassVars:
+  Exclude:
+    - 'test/pretty_table_test.rb'
+
+Style/Documentation:
+  Enabled: false
+
+Style/For:
+  Exclude:
+    - 'lib/pretty_table.rb'
+
+Style/PerlBackrefs:
+  Enabled: false
+
+Style/TrailingCommaInLiteral:
+  EnforcedStyleForMultiline: consistent_comma
