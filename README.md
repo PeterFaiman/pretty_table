@@ -1,5 +1,7 @@
 # PrettyTable
 
+[![Build Status](https://travis-ci.org/PeterFaiman/pretty_table.svg?branch=master)](https://travis-ci.org/PeterFaiman/pretty_table)
+
 Format arrays into ASCII tables.
 
 Includes a command line tool `pretty_table` that reads text input and
